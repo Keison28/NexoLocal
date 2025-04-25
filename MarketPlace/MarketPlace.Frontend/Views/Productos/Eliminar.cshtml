@@ -1,22 +1,14 @@
-﻿@using Marketplace.Domain.Entities
-@model Producto
+﻿@model Marketplace.Domain.Entities.Producto
 
-@{
-    ViewData["Title"] = "Crear Producto";
-}
+<h2>Eliminar Producto</h2>
 
-<h1>Crear Producto</h1>
+<h4>¿Estás seguro que deseas eliminar este producto?</h4>
+<div>
+    <strong>Nombre:</strong> @Model.Nombre <br />
+    <strong>Precio:</strong> @Model.Precio <br />
+    <strong>Precio:</strong> @Model.Stock <br />
+</div>
 
-<form asp-action="Crear" method="post">
-    <div class="form-group">
-        <label for="Nombre">Nombre</label>
-        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required />
-    </div>
 
-    <div class="form-group">
-        <label for="Precio">Precio</label>
-        <input type="number" class="form-control" id="Precio" name="Precio" value="@Model.Precio" required />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Crear</button>
-</form>
+<a href="@Url.Action("EliminarConfirmado", "Productos", new { id = Model.Id })" class="btn btn-danger">Eliminar</a>
+<a href="@Url.Action("Index", "Productos")" class="btn btn-secondary">Cancelar</a>

@@ -1,18 +1,35 @@
-﻿@using Marketplace.Domain.Entities
-@model Producto
+﻿@model Marketplace.Domain.Entities.Producto
 
 @{
-    ViewData["Title"] = "Eliminar Producto";
+    ViewData["Title"] = "Editar Producto";
 }
 
-<h1>Eliminar Producto</h1>
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
 
-<div class="alert alert-danger">
-    <p>¿Estás seguro de que deseas eliminar el producto <strong>@Model.Nombre</strong>?</p>
+    <form method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="Nombre" class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required />
+            <div class="invalid-feedback">
+                Por favor ingresa el nombre del producto.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="Precio" name="Precio" value="@Model.Precio" required />
+            <div class="invalid-feedback">
+                Por favor ingresa el precio del producto.
+            </div>
+        </div><div class="mb-3">
+            <label for="Stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="Stock" name="Stock" value="@Model.Stock" required />
+            <div class="invalid-feedback">
+                Por favor ingresa el Stock del producto.
+            </div>
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+    </form>
 </div>
-
-<form asp-action="EliminarConfirmado" method="post">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Eliminar</button>
-    <a href="@Url.Action("Index", "Productos")" class="btn btn-secondary">Cancelar</a>
-</form>

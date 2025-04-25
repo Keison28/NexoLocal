@@ -1,0 +1,19 @@
+﻿@model Marketplace.Domain.Entities.Producto
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<h3>¿Estás seguro de que deseas eliminar el siguiente producto?</h3>
+
+<div>
+    <p><strong>Nombre del Producto:</strong> @Model.Nombre</p>
+    <p><strong>Precio:</strong> @Model.Precio</p>
+    <p><strong>Descripción:</strong> @Model.Stock</p>
+</div>
+
+<form asp-action="EliminarConfirmado" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="@Url.Action("Index", "Productos")" class="btn btn-secondary">Cancelar</a>
+</form>

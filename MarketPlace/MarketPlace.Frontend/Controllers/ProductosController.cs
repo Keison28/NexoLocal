@@ -62,7 +62,6 @@ public class ProductosController : Controller
         return View(producto);
     }
 
-    // Acción para eliminar un producto
     public async Task<IActionResult> Eliminar(int id)
     {
         var producto = await _productoService.ObtenerProductoPorId(id);
@@ -70,13 +69,13 @@ public class ProductosController : Controller
         {
             return NotFound();
         }
-        return View(producto);
-    }
 
-    [HttpPost, ActionName("Eliminar")]
-    public async Task<IActionResult> EliminarConfirmado(int id)
-    {
+        // Eliminar producto directamente
         await _productoService.EliminarProducto(id);
+
+        // Redirigir a la vista de listado
         return RedirectToAction(nameof(Index));
     }
 }
+
+

@@ -4,32 +4,39 @@
     ViewData["Title"] = "Listado de Productos";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!-- Botón para crear un nuevo producto -->
+<div class="mb-3">
+    <a href="@Url.Action("Crear", "Productos")" class="btn btn-success">Crear Nuevo Producto</a>
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        @foreach (var producto in Model)
         {
-            <tr>
-                <td>@item.Nombre</td>
-                <td>@item.Precio</td>
-                <td>@item.Stock</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </td>
-            </tr>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.Nombre</h5>
+                        <p class="card-text">Precio: $@producto.Precio</p>
+                        <p class="card-text">Stock: @producto.Stock</p>
+                        <a href="@Url.Action("Editar", "Productos", new { id = producto.Id })" class="btn btn-warning">Editar</a>
+                        <button class="btn btn-danger" onclick="confirmarEliminacion(@producto.Id)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>
 
-<a class="btn btn-primary" asp-action="Create">Crear Nuevo Producto</a>
+@section Scripts {
+    <script>
+        function confirmarEliminacion(id) {
+            if (confirm("¿Estás seguro de que quieres eliminar este producto?")) {
+                window.location.href = '/Productos/Eliminar/' + id;
+            }
+        }
+    </script>
+}
