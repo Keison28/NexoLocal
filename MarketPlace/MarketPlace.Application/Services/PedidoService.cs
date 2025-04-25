@@ -1,24 +1,40 @@
 ﻿using Marketplace.Domain.Entities;
 using Marketplace.Infrastructure.Repositories;
 
-public class PedidoService
+namespace Marketplace.Application.Services
 {
-    private readonly PedidoRepository _PedidoRepository;
-
-    public PedidoService(PedidoRepository pedidoRepository)
+    public class PedidoService
     {
-        _PedidoRepository = pedidoRepository;
+        private readonly PedidoRepository _pedidoRepository;
+
+        public PedidoService(PedidoRepository pedidoRepository)
+        {
+            _pedidoRepository = pedidoRepository;
+        }
+
+        public async Task<List<Pedido>> ObtenerPedidos()
+        {
+            return await _pedidoRepository.ObtenerTodosAsync();
+        }
+
+        public async Task<Pedido?> ObtenerPedidoPorId(int id)
+        {
+            return await _pedidoRepository.ObtenerPorIdAsync(id);
+        }
+
+        public async Task CrearPedido(Pedido pedido)
+        {
+            await _pedidoRepository.CrearAsync(pedido);
+        }
+
+        public async Task ActualizarPedido(Pedido pedido)
+        {
+            await _pedidoRepository.ActualizarAsync(pedido);
+        }
+
+        public async Task EliminarPedido(int id)
+        {
+            await _pedidoRepository.EliminarAsync(id);
+        }
     }
-
-    public Task<List<Pedido>> ObtenerPedido() => _PedidoRepository.ObtenerPedidosAsync();
-
-    public Task<Pedido> ObtenerPedidoPorId(int id) => _PedidoRepository.ObtenerPedidoPorIdAsync(id);
-
-    public Task CrearPedido(Pedido pedido) => _PedidoRepository.CrearPedidoAsync(pedido);
-
-    public Task ActualizarPedido(Pedido pedido) => _PedidoRepository.ActualizarPedidoAsync(pedido);
-
-    public Task EliminarPedido(int id) => _PedidoRepository.EliminarPedidoAsync(id);
 }
-
-   

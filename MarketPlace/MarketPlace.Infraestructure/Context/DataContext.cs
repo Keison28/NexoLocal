@@ -8,7 +8,8 @@ namespace Marketplace.Infrastructure.Context
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<DetallePedido> DetallePedidos { get; set; }
+        public DbSet<DetallePedido> DetallesPedido { get; set; }
+
 
         public MarketplaceDbContext(DbContextOptions<MarketplaceDbContext> options) : base(options) { }
     }

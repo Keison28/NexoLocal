@@ -30,11 +30,10 @@ builder.Services.AddScoped<UsuarioService>();
 
 
 
-// Configura HttpClient para hacer peticiones al backend de la API
-builder.Services.AddHttpClient("API", client =>
+
+builder.Services.AddHttpClient("PedidosAPI", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7145;http://localhost:5266"); // La URL de la API, ajústala si es diferente
-    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.BaseAddress = new Uri("https://localhost:7145/"); // <-- cambia esto por la URL real de tu API
 });
 
 var app = builder.Build();

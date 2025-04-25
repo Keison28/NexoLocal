@@ -2,14 +2,18 @@
 
 namespace Marketplace.Domain.DTOs
 {
-    public class PedidoDto
+    public class PedidoConDetallesDto
     {
         public int Id { get; set; }
+        public string Cliente { get; set; }
         public DateTime Fecha { get; set; }
-        public string Estado { get; set; }
-        public int UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }  // Relación con Usuario
-
-        public List<DetallePedido> Detalles { get; set; }
+        public List<DetallePedidoDto> Detalles { get; set; }
     }
+
+    public class DetallePedidoDto
+    {
+        public string Producto { get; set; }
+        public int Cantidad { get; set; }
+    }
+
 }

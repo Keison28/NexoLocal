@@ -1,35 +1,50 @@
-﻿@model Marketplace.Domain.Entities.Pedido
+﻿@model Pedido
 
 @{
-    ViewData["Title"] = "Crear Pedido";
+    ViewData["Title"] = "Nuevo Pedido";
 }
 
-<div class="container mt-4">
-    <h1>@ViewData["Title"]</h1>
+<h2>@ViewData["Title"]</h2>
 
-    <form method="post" class="needs-validation" novalidate>
-        <div class="mb-3">
-            <label for="Fecha" class="form-label">Fecha del pedido</label>
-            <input type="date" class="form-control" id="Fecha" name="Fecha" required />
-            <div class="invalid-feedback">
-                Por favor ingresa la fecha
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="Estado" class="form-label">Estado</label>
-            <input type="text" class="form-control" id="Estado" name="Estado" required />
-            <div class="invalid-feedback">
-                Por favor seleccione el estado del pedido.
-            </div>
-        </div><div class="mb-3">
-            <label for="UsusarioId" class="form-label">UsusarioId</label>
-            <input type="number" class="form-control" id="UsusarioId" name="UsusarioId" required />
-            <div class="invalid-feedback">
-                Por favor seleccione el UsusarioId
-            </div>
-        </div>
+<hr />
 
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label">Fecha del Pedido</label>
+                <input asp-for="Fecha" class="form-control" type="datetime-local" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Crear Producto</button>
-    </form>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label">Estado</label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UsuarioId" class="control-label">ID del Usuario</label>
+                <input asp-for="UsuarioId" class="form-control" />
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
+            </div>
+
+            <!-- Aquí puedes agregar dinámicamente detalles del pedido -->
+            <div class="form-group">
+                <label class="control-label">Detalles (por ahora agregarás manualmente en el backend o en una edición posterior)</label>
+                <p class="text-muted">Los detalles del pedido se pueden agregar más adelante en la edición.</p>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
