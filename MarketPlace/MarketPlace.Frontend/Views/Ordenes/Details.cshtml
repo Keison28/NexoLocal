@@ -1,0 +1,16 @@
+﻿@model Marketplace.Domain.Entities.Orden
+
+<h1>Detalles de la Orden</h1>
+<h2>Detalles del Usuario</h2>
+
+<div>
+    <strong>Nombre:</strong> @Model.Id <br />
+    <strong>Dirección:</strong> @Model.Usuario <br />
+    <strong>Teléfono:</strong> @Model.Producto <br />
+    <strong>Email:</strong> @Model.Cantidad <br />
+    <strong>Fecha Registro:</strong> @Model.Fecha.ToShortDateString() <br />
+</div>
+<div>
+    <a asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Volver al listado</a>
+</div>

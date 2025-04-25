@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Marketplace.Domain.Entities.Orden>
+
+<h1>Listado de Ordenes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Usuario</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orden in Model)
+        {
+            <tr>
+                <td>@orden.Id</td>
+                <td>@orden.Usuario.Nombre</td>
+                <td>@orden.Producto.Nombre</td>
+                <td>@orden.Cantidad</td>
+                <td>@orden.Fecha.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Details", "Ordenes", new { id = orden.Id })">Ver</a> |
+
+                    <a href="@Url.Action("Editar", "Ordenes", new { id = orden.Id })">Editar</a> |
+                    <a href="@Url.Action("Eliminar", "Ordenes", new { id = orden.Id })">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Crear", "Ordenes")">Crear Orden</a>
