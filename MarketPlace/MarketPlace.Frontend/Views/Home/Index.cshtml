@@ -2,7 +2,80 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="display-4 text-center mt-5">Bienvenido a NexoLocal</h1>
+<p class="lead text-center">Conecta con tu comunidad, apoya negocios locales y encuentra lo que necesitas al instante.</p>
+
+<div class="text-center mt-4">
+    <a class="btn btn-primary btn-lg me-2" href="/Productos">Ver Productos</a>
+    <a class="btn btn-outline-secondary btn-lg" href="/Usuarios">Nuestros Vendedores</a>
 </div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-4">
+        <i class="bi bi-shop-window fs-1 text-primary"></i>
+        <h4>Negocios Cercanos</h4>
+        <p>Apoya el comercio local de tu zona.</p>
+    </div>
+    <div class="col-md-4">
+        <i class="bi bi-bag-check fs-1 text-success"></i>
+        <h4>Compra Segura</h4>
+        <p>Plataforma confiable y rápida para pedidos.</p>
+    </div>
+    <div class="col-md-4">
+        <i class="bi bi-globe fs-1 text-info"></i>
+        <h4>Conexión Real</h4>
+        <p>Únete a una red de emprendedores locales.</p>
+    </div>
+</div>
+<footer class="bg-dark text-white pt-5 pb-5">
+    <div class="container-fluid px-5">
+        <div class="row">
+
+            <!-- Logo y descripción -->
+            <div class="col-md-4 mb-4">
+                <h4 class="text-warning fw-bold">NexoLocal</h4>
+                <p class="mt-3">La plataforma que impulsa a los pequeños negocios. Conecta con tu comunidad, compra local y fortalece tu zona.</p>
+            </div>
+
+            <!-- Navegación -->
+            <div class="col-md-2 mb-4">
+                <h5 class="text-warning">Navegación</h5>
+                <ul class="list-unstyled mt-3">
+                    <li><a href="/Productos" class="text-white text-decoration-none">Productos</a></li>
+                    <li><a href="/Usuarios" class="text-white text-decoration-none">Vendedores</a></li>
+                    <li><a href="/Ordenes" class="text-white text-decoration-none">Pedidos</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div class="col-md-3 mb-4">
+                <h5 class="text-warning">Contacto</h5>
+                <ul class="list-unstyled mt-3">
+                    <li><i class="bi bi-geo-alt-fill me-2"></i>Ciudad Local, País</li>
+                    <li><i class="bi bi-envelope-fill me-2"></i>contacto@nexolocal.com</li>
+                    <li><i class="bi bi-telephone-fill me-2"></i>+123 456 789</li>
+                </ul>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="col-md-3 text-md-start text-center">
+                <h5 class="text-warning">Síguenos</h5>
+                <div class="mt-3">
+                    <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <hr style="background-color: rgba(255,255,255,0.2);" class="mt-5 mb-3" />
+
+        <div class="row">
+            <div class="col text-center">
+                <p class="mb-0">© 2025 <strong class="text-warning">NexoLocal</strong>. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
