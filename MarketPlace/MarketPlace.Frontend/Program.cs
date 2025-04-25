@@ -1,4 +1,5 @@
 using Marketplace.Infrastructure.Context;
+using Marketplace.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddScoped<ProductoService>();
 builder.Services.AddScoped<ProductoRepository>();
+builder.Services.AddScoped<PedidoRepository>();
+builder.Services.AddScoped<PedidoService>();
+
+
+
 
 // Configura HttpClient para hacer peticiones al backend de la API
 builder.Services.AddHttpClient("API", client =>

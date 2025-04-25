@@ -1,13 +1,17 @@
-﻿namespace Marketplace.Domain.Entities
+﻿using Marketplace.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
+
+namespace Marketplace.Domain.Entities
 {
     public class Pedido
     {
         public int Id { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Estado { get; set; }
-        public int UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }  // Relación con Usuario
 
-        public List<DetallePedido> Detalles { get; set; }
+        [Required(ErrorMessage = "La fecha es obligatoria.")]
+        public DateTime Fecha { get; set; }
+
+        [Required(ErrorMessage = "El estado es obligatorio.")]
+        public string Estado { get; set; }
+
     }
 }

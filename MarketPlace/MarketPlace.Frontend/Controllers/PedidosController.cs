@@ -17,49 +17,51 @@ public class PedidosController : Controller
         return View(Pedidos);
     }
 
-    // Acción para crear un nuevo Pedido
+    // GET: Pedidos/Crear
     public IActionResult Crear()
     {
         return View();
     }
 
+    // POST: Pedidos/Crear
     [HttpPost]
-    public async Task<IActionResult> Crear(Pedido Pedido)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Crear(Pedido pedido)
     {
         if (ModelState.IsValid)
         {
-            await _PedidoService.CrearPedido(Pedido);
-            return RedirectToAction(nameof(Index)); // Redirige a la vista de listado
+            await _PedidoService.CrearPedido(pedido);
+            return RedirectToAction(nameof(Index)); // Después de guardar, redirige al listado
         }
-        return View(Pedido);
+        return View(pedido); // Si no es válido, vuelve a mostrar la vista
     }
-
-    // Acción para editar un Pedido
+    // GET: Pedidos/Editar/5
     public async Task<IActionResult> Editar(int id)
     {
-        var Pedido = await _PedidoService.ObtenerPedidoPorId(id);
-        if (Pedido == null)
+        var pedido = await _PedidoService.ObtenerPedidoPorId(id);
+        if (pedido == null)
         {
             return NotFound();
         }
-        return View(Pedido);
+        return View(pedido);
     }
 
+    // POST: Pedidos/Editar/5
     [HttpPost]
-    public async Task<IActionResult> Editar(int id, Pedido Pedido)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Editar(int id, Pedido pedido)
     {
-        if (id != Pedido.Id)
+        if (id != pedido.Id)
         {
             return NotFound();
         }
 
         if (ModelState.IsValid)
         {
-            await _PedidoService.ActualizarPedido(Pedido);
-            return RedirectToAction(nameof(Index));
+            await _PedidoService.ActualizarPedido(pedido);
+            return RedirectToAction(nameof(Index)); // Redirige a la lista después de editar
         }
-
-        return View(Pedido);
+        return View(pedido);
     }
 
     public async Task<IActionResult> Eliminar(int id)

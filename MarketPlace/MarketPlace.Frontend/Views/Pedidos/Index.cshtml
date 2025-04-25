@@ -1,37 +1,41 @@
-﻿@model List<Marketplace.Domain.Entities.Pedido>
+﻿@model IEnumerable<Marketplace.Domain.Entities.Pedido>
 
 @{
-    ViewData["Title"] = "Pedidos";
+    ViewData["Title"] = "Listado de Pedidos";
 }
 
-<h2>Pedidos</h2>
+<!-- Botón para crear un nuevo producto -->
+<div class="mb-3">
+    <a href="@Url.Action("Crear", "Pedidos")" class="btn btn-success">Crear Nuevo Pedido</a>
+</div>
 
-<a class="btn btn-primary mb-3" asp-action="Crear">Crear Pedido</a>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Usuario</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
         @foreach (var pedido in Model)
         {
-            <tr>
-                <td>@pedido.Id</td>
-                <td>@pedido.Fecha.ToShortDateString()</td>
-                <td>@pedido.Estado</td>
-                <td>@pedido.UsuarioId</td>
-                <td>
-                    <a class="btn btn-warning btn-sm" asp-action="Editar" asp-route-id="@pedido.Id">Editar</a>
-                    <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-route-id="@pedido.Id"
-                       onclick="return confirm('¿Estás seguro de que quieres eliminar este pedido?');">Eliminar</a>
-                </td>
-            </tr>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@pedido.Fecha</h5>
+                        <p class="card-text">Estado: @pedido.Estado</p>
+                        <a href="@Url.Action("Editar", "Pedidos", new { id = pedido.Id })" class="btn btn-warning">Editar</a>
+                        <button class="btn btn-danger" onclick="confirmarEliminacion(@pedido.Id)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmarEliminacion(id) {
+            if (confirm("¿Estás seguro de que quieres eliminar este Pedido?")) {
+                window.location.href = '/Productos/Eliminar/' + id;
+            }
+        }
+    </script>
+}

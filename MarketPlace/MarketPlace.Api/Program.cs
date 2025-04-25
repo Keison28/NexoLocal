@@ -1,4 +1,5 @@
 using Marketplace.Infrastructure.Context;
+using Marketplace.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ProductoService>();
 builder.Services.AddScoped<ProductoRepository>();
+builder.Services.AddScoped<PedidoService>();
+builder.Services.AddScoped<PedidoRepository>();
 
 
 var app = builder.Build();

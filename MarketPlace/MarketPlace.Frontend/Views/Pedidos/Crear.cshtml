@@ -4,22 +4,26 @@
     ViewData["Title"] = "Crear Pedido";
 }
 
-<h2>Crear Pedido</h2>
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
 
-<form asp-action="Crear">
-    <div class="form-group">
-        <label asp-for="Fecha"></label>
-        <input asp-for="Fecha" class="form-control" type="date" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Estado"></label>
-        <input asp-for="Estado" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="UsuarioId"></label>
-        <input asp-for="UsuarioId" class="form-control" />
-    </div>
+    <form method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="Fecha" class="form-label">Fecha del pedido</label>
+            <input type="date" class="form-control" id="Fecha" name="Fecha" required />
+            <div class="invalid-feedback">
+                Por favor ingresa la fecha
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Estado" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="Estado" name="Estado" required />
+            <div class="invalid-feedback">
+                Por favor seleccione el estado del pedido.
+            </div>
+        
 
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-</form>
+
+        <button type="submit" class="btn btn-primary">Crear Producto</button>
+    </form>
+</div>
