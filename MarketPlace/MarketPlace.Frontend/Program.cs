@@ -25,7 +25,8 @@ builder.Services.AddScoped<PedidoRepository>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<UsuarioService>();
-
+builder.Services.AddScoped<OrdenRepository>();
+builder.Services.AddScoped<OrdenService>();
 
 
 

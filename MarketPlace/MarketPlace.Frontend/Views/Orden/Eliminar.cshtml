@@ -1,0 +1,15 @@
+﻿@model Pedido
+
+<h2>¿Desea eliminar este pedido?</h2>
+
+<div>
+    <strong>ID:</strong> @Model.Id<br />
+    <strong>Fecha:</strong> @Model.Fecha<br />
+    <strong>Estado:</strong> @Model.Estado
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

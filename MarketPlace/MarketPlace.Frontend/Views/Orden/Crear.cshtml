@@ -1,0 +1,50 @@
+﻿@model Pedido
+
+@{
+    ViewData["Title"] = "Nuevo Pedido";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label">Fecha del Pedido</label>
+                <input asp-for="Fecha" class="form-control" type="datetime-local" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label">Estado</label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UsuarioId" class="control-label">ID del Usuario</label>
+                <input asp-for="UsuarioId" class="form-control" />
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
+            </div>
+
+            <!-- Aquí puedes agregar dinámicamente detalles del pedido -->
+            <div class="form-group">
+                <label class="control-label">Detalles (por ahora agregarás manualmente en el backend o en una edición posterior)</label>
+                <p class="text-muted">Los detalles del pedido se pueden agregar más adelante en la edición.</p>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

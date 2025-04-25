@@ -1,0 +1,35 @@
+﻿@model List<Pedido>
+
+<h1>Lista de Pedidos</h1>
+
+@foreach (var pedido in Model)
+{
+    <div class="card mb-3">
+        <h4>Pedido #@pedido.Id - @pedido.Estado</h4>
+        <p><strong>Cliente:</strong> @pedido.Usuario.Nombre</p>
+        <p><strong>Fecha:</strong> @pedido.Fecha.ToShortDateString()</p>
+
+        <h5>Detalles:</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detalle in pedido.Detalles)
+                {
+                    <tr>
+                        <td>@detalle.Producto.Nombre</td>
+                        <td>@detalle.Cantidad</td>
+                        <td>@detalle.PrecioUnitario</td>
+                        <td>@(detalle.Cantidad * detalle.PrecioUnitario)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
