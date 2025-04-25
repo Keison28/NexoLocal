@@ -19,4 +19,8 @@
     <ProjectReference Include="..\MarketPlace.Domain\MarketPlace.Domain.csproj" />
   </ItemGroup>
 
+	
+
+ 
+
 </Project>

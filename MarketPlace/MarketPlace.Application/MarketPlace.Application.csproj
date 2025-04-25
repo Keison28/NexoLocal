@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MarketPlace.Domain\MarketPlace.Domain.csproj" />
+    <ProjectReference Include="..\MarketPlace.Infraestructure\MarketPlace.Infraestructure.csproj" />
+  </ItemGroup>
+
 </Project>
