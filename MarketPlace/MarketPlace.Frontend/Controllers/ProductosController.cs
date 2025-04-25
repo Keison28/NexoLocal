@@ -1,5 +1,6 @@
 ﻿using Marketplace.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class ProductosController : Controller
 {
@@ -33,6 +34,9 @@ public class ProductosController : Controller
         }
         return View(producto);
     }
+
+    
+
 
     // Acción para editar un producto
     public async Task<IActionResult> Editar(int id)

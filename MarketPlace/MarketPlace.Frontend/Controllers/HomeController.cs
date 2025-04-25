@@ -1,16 +1,26 @@
 using System.Diagnostics;
+using Marketplace.Infrastructure.Context;
 using MarketPlace.Frontend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MarketPlace.Frontend.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly MarketplaceDbContext _context;
+
+        public HomeController(MarketplaceDbContext context)
         {
-            _logger = logger;
+            _context = context;
+        }
+       
+
+        public async Task<IActionResult> Catalogo()
+        {
+            var productos = await _context.Productos.ToListAsync();
+            return View(productos);
         }
 
         public IActionResult Index()
