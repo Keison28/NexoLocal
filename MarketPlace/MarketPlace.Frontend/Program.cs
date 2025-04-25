@@ -1,3 +1,5 @@
+using Marketplace.Application.Interfaces;
+using Marketplace.Application.Services;
 using Marketplace.Infrastructure.Context;
 using Marketplace.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,9 @@ builder.Services.AddScoped<ProductoService>();
 builder.Services.AddScoped<ProductoRepository>();
 builder.Services.AddScoped<PedidoRepository>();
 builder.Services.AddScoped<PedidoService>();
+builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<UsuarioService>();
+
 
 
 

@@ -1,13 +1,14 @@
 ﻿using Marketplace.Domain.DTOs;
+using Marketplace.Domain.Entities;
 
 namespace Marketplace.Application.Interfaces
 {
-    public interface IProductoService
+    public interface IUsuarioService
     {
-        Task<List<ProductoDto>> ObtenerTodosAsync();
-        Task<ProductoDto> ObtenerPorIdAsync(int id);
-        Task CrearAsync(ProductoDto productoDto);
-        Task ActualizarAsync(ProductoDto productoDto);
+        Task<List<Usuario>> ObtenerTodosAsync();
+        Task<Usuario> ObtenerPorIdAsync(int id);
+        Task CrearAsync(Usuario Usuario);
+        Task ActualizarAsync(Usuario Usuario);
         Task EliminarAsync(int id);
     }
 }

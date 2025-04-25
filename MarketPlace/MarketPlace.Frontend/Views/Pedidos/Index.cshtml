@@ -21,6 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@pedido.Fecha</h5>
                         <p class="card-text">Estado: @pedido.Estado</p>
+                        <p class="card-text">UsuarioId: @pedido.UsuarioId</p>
                         <a href="@Url.Action("Editar", "Pedidos", new { id = pedido.Id })" class="btn btn-warning">Editar</a>
                         <button class="btn btn-danger" onclick="confirmarEliminacion(@pedido.Id)">Eliminar</button>
                     </div>
