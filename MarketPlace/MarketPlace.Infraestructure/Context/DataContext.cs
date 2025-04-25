@@ -6,6 +6,9 @@ namespace Marketplace.Infrastructure.Context
     public class MarketplaceDbContext : DbContext
     {
         public DbSet<Producto> Productos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<DetallePedido> DetallePedidos { get; set; }
 
         public MarketplaceDbContext(DbContextOptions<MarketplaceDbContext> options) : base(options) { }
     }

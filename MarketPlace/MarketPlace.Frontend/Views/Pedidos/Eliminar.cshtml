@@ -1,0 +1,21 @@
+﻿@model Marketplace.Domain.Entities.Pedido
+
+@{
+    ViewData["Title"] = "Eliminar Pedido";
+}
+
+<h2>Eliminar Pedido</h2>
+
+<h4>¿Estás seguro que deseas eliminar este pedido?</h4>
+
+<div>
+    <p><strong>Fecha:</strong> @Model.Fecha.ToShortDateString()</p>
+    <p><strong>Estado:</strong> @Model.Estado</p>
+    <p><strong>UsuarioId:</strong> @Model.UsuarioId</p>
+</div>
+
+<form asp-action="Eliminar">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

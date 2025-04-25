@@ -1,10 +1,9 @@
 ﻿using Marketplace.Infrastructure.Interfaces;
-using Marketplace.Infrastructure.Services;
 using Marketplace.Infrastructure.Context;
 
 namespace Marketplace.Infrastructure
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork 
     {
         private readonly MarketplaceDbContext _context;
 
@@ -16,9 +15,7 @@ namespace Marketplace.Infrastructure
             _context = context;
         }
 
-        public IProductoService ProductoService =>
-            _productoService ??= new ProductoService(_context);
-
+       
         public async Task<int> GuardarCambiosAsync()
         {
             return await _context.SaveChangesAsync();

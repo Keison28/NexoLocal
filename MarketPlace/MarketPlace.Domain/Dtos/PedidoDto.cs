@@ -1,6 +1,8 @@
-﻿namespace Marketplace.Domain.Entities
+﻿using Marketplace.Domain.Entities;
+
+namespace Marketplace.Domain.DTOs
 {
-    public class Pedido
+    public class PedidoDto
     {
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
