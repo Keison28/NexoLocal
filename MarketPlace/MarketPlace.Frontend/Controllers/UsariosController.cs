@@ -1,91 +1,73 @@
-﻿using Marketplace.Domain.Entities;
-using Marketplace.Infrastructure.Repositories;
+﻿using Marketplace.Application.Services;
+using Marketplace.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Marketplace.Web.Controllers
+namespace Marketplace.Frontend.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly UsuarioService _usuarioService;
 
-        public UsuariosController(UsuarioRepository usuarioRepository)
+        public UsuariosController(UsuarioService usuarioService)
         {
-            _usuarioRepository = usuarioRepository;
+            _usuarioService = usuarioService;
         }
 
-        // Acción para listar usuarios
         public async Task<IActionResult> Index()
         {
-            var usuarios = await _usuarioRepository.ObtenerUsuariosAsync();
+            var usuarios = await _usuarioService.ObtenerUsuariosAsync();
             return View(usuarios);
         }
 
-        // Acción para crear un nuevo usuario (Vista GET)
-        public IActionResult Crear()
+        public async Task<IActionResult> Details(int id)
+        {
+            var usuario = await _usuarioService.ObtenerUsuarioPorIdAsync(id);
+            if (usuario == null) return NotFound();
+            return View(usuario);
+        }
+
+        public IActionResult Create()
         {
             return View();
         }
 
-        // Acción para crear un nuevo usuario (Vista POST)
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Crear(Usuario usuario)
+        public async Task<IActionResult> Create(Usuario usuario)
         {
-            if (ModelState.IsValid)
-            {
-                await _usuarioRepository.CrearUsuarioAsync(usuario);
-                return RedirectToAction(nameof(Index)); // Redirige a la vista de listado
-            }
-            return View(usuario); // Si no es válido, vuelve a mostrar la vista
+            if (!ModelState.IsValid) return View(usuario);
+            await _usuarioService.CrearUsuarioAsync(usuario);
+            return RedirectToAction(nameof(Index));
         }
 
-        // Acción para editar un usuario (Vista GET)
-        public async Task<IActionResult> Editar(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var usuario = await _usuarioRepository.ObtenerUsuarioPorIdAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
+            var usuario = await _usuarioService.ObtenerUsuarioPorIdAsync(id);
+            if (usuario == null) return NotFound();
             return View(usuario);
         }
 
-        // Acción para editar un usuario (Vista POST)
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Editar(int id, Usuario usuario)
+        public async Task<IActionResult> Edit(int id, Usuario usuario)
         {
-            if (id != usuario.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                await _usuarioRepository.ActualizarUsuarioAsync(usuario);
-                return RedirectToAction(nameof(Index)); // Redirige a la lista de usuarios
-            }
-            return View(usuario); // Si no es válido, vuelve a mostrar la vista
+            if (id != usuario.Id) return BadRequest();
+            if (!ModelState.IsValid) return View(usuario);
+            await _usuarioService.ActualizarUsuarioAsync(usuario);
+            return RedirectToAction(nameof(Index));
         }
 
-        // Acción para eliminar un usuario (Vista GET)
-        public async Task<IActionResult> Eliminar(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var usuario = await _usuarioRepository.ObtenerUsuarioPorIdAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
+            var usuario = await _usuarioService.ObtenerUsuarioPorIdAsync(id);
+            if (usuario == null) return NotFound();
             return View(usuario);
         }
 
-        // Acción para eliminar un usuario (Vista POST)
-        [HttpPost, ActionName("Eliminar")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarConfirmado(int id)
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _usuarioRepository.EliminarUsuarioAsync(id);
-            return RedirectToAction(nameof(Index)); // Redirige a la lista de usuarios después de eliminar
+            await _usuarioService.EliminarUsuarioAsync(id);
+            return RedirectToAction(nameof(Index));
         }
+
     }
 }

@@ -1,0 +1,27 @@
+﻿@model Marketplace.Domain.Entities.Usuario
+
+<h2>Crear Usuario</h2>
+
+<form asp-action="Crear">
+    <div class="form-group">
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Dirección</label>
+        <input asp-for="Direccion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Teléfono</label>
+        <input asp-for="Telefono" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Fecha de Registro</label>
+        <input asp-for="FechaRegistro" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Guardar</button>
+</form>

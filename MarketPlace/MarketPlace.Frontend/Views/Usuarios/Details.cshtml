@@ -1,0 +1,14 @@
+﻿@model Marketplace.Domain.Entities.Usuario
+
+<h2>Detalles del Usuario</h2>
+
+<div>
+    <strong>Nombre:</strong> @Model.Nombre <br />
+    <strong>Dirección:</strong> @Model.Direccion <br />
+    <strong>Teléfono:</strong> @Model.Telefono <br />
+    <strong>Email:</strong> @Model.Email <br />
+    <strong>Fecha Registro:</strong> @Model.FechaRegistro.ToShortDateString() <br />
+</div>
+
+<a class="btn btn-primary mt-2" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+<a class="btn btn-secondary mt-2" asp-action="Index">Volver</a>
