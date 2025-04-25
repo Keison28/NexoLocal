@@ -1,4 +1,5 @@
-﻿using Marketplace.Infrastructure.Context;
+﻿using Marketplace.Domain.Entities;
+using Marketplace.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
 public class ProductoRepository

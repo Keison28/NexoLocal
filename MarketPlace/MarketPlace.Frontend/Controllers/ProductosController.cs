@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Marketplace.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
+
 public class ProductosController : Controller
 {
     private readonly ProductoService _productoService;

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Marketplace.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Marketplace.Infrastructure.Context
 {

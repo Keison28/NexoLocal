@@ -1,4 +1,6 @@
-﻿public class ProductoService
+﻿using Marketplace.Domain.Entities;
+
+public class ProductoService
 {
     private readonly ProductoRepository _productoRepository;
 
