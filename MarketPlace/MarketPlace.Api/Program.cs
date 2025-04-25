@@ -1,4 +1,11 @@
+using Marketplace.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// En Program.cs
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MainDatabaseStr")));
 
 // Add services to the container.
 
